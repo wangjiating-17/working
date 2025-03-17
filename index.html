@@ -3,50 +3,176 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>title很重要，不要随意写</title>
+    <title>个人网页示例 - HTML基础元素展示</title>
+    <style>
+      body {
+        font-family: 'Microsoft YaHei', Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+        background-color: #f8f8f8;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+      }
+      a {
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      a:hover {
+        color: #2980b9;
+        text-decoration: underline;
+      }
+      ol {
+        background-color: #f9f9f9;
+        padding: 15px 15px 15px 40px;
+        border-radius: 5px;
+      }
+      li {
+        margin-bottom: 8px;
+      }
+      img {
+        border-radius: 5px;
+        margin: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+      img:hover {
+        transform: scale(1.05);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+      form {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      input[type="text"] {
+        width: 70%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      input[type="submit"] {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+      input[type="submit"]:hover {
+        background-color: #2980b9;
+      }
+      .section {
+        margin-bottom: 30px;
+      }
+    </style>
   </head>
   <body>
-    <h1>一级标题</h1>
-    <div>
-      <p>
-        段落标记，a是行内元素，效果是这样的，<a href="https://yangzh.cn"
-          >这是一个超链接地址。</a
-        >
-      </p>
-      <ol>
-        <li>这是列表</li>
-        <li>这是列表</li>
-        <li>这是列表</li>
-        <li>这是列表</li>
-      </ol>
-      <p>
-        <img src="th.jpg" alt="图片替代说明文字" width="200" /><img
-          src="https://th.bing.com/th?id=ORMS.3fb2a132a334ae0b49ef98c73cc2c6cd&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0"
-          alt="说明文字"
-          width="200"
-        />
-      </p>
-      <table>
-        <tr>
-          <td>单元格1</td>
-          <td>单元格1</td>
-          <td>单元格1</td>
-        </tr>
-        <tr>
-          <td>单元格1</td>
-          <td>单元格1</td>
-          <td>单元格1</td>
-        </tr>
-        <tr>
-          <td>单元格1</td>
-          <td>单元格1</td>
-          <td>单元格1</td>
-        </tr>
-      </table>
-      <form action="https://search.douban.com/book/subject_search">
-        <input type="text" name="search_text" />
-        <input type="submit" />
-      </form>
+    <div class="container">
+      <h1>欢迎进入熬夜专场</h1>
+      
+      <div class="section">
+        <h2>文本与链接</h2>
+        <p>
+          段落标记，a是行内元素，效果是这样的，<a href="https://yangzh.cn" target="_blank"
+            >这是一个超链接地址。</a
+          >
+        </p>
+      </div>
+      
+      <div class="section">
+        <h2>有序列表</h2>
+        <ol>
+          <li>这是列表项一</li>
+          <li>这是列表项二</li>
+          <li>这是列表项三</li>
+          <li>这是列表项四</li>
+        </ol>
+      </div>
+      
+      <div class="section">
+        <h2>图片展示</h2>
+        <p>
+          <img src="https://th.bing.com/th?id=ORMS.3fb2a132a334ae0b49ef98c73cc2c6cd&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0" alt="风景图片" width="200" />
+          <img src="https://th.bing.com/th?id=ORMS.3fb2a132a334ae0b49ef98c73cc2c6cd&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0" alt="风景图片" width="200" />
+        </p>
+      </div>
+      
+      <div class="section">
+        <h2>表格示例</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>表头一</th>
+              <th>表头二</th>
+              <th>表头三</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>数据 1-1</td>
+              <td>数据 1-2</td>
+              <td>数据 1-3</td>
+            </tr>
+            <tr>
+              <td>数据 2-1</td>
+              <td>数据 2-2</td>
+              <td>数据 2-3</td>
+            </tr>
+            <tr>
+              <td>数据 3-1</td>
+              <td>数据 3-2</td>
+              <td>数据 3-3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="section">
+        <h2>搜索表单</h2>
+        <form action="https://search.douban.com/book/subject_search" method="get">
+          <label for="search_text">搜索豆瓣图书：</label>
+          <input type="text" id="search_text" name="search_text" placeholder="输入要搜索的图书名称..." />
+          <input type="submit" value="搜索" />
+        </form>
+      </div>
     </div>
   </body>
 </html>
