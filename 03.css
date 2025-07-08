@@ -1,0 +1,36 @@
+/* 提取自 <style> 标签 */
+h1 {
+    font-family: 楷体;
+    color: brown;
+}
+
+p {
+    text-indent: 2em;
+    line-height: 1.7;
+}
+
+/* 类选择符 */
+.abstract {
+    font-size: 14px;
+}
+
+h2 {
+    color: coral;
+}
+
+#CSSbase {
+    color: darkgreen;
+}
+
+a:link {
+    color: rgb(87, 87, 197);
+}
+
+a:visited {
+    color: darkgrey;
+}
+
+/* 提取自行内样式 */
+h1 {
+    color: darkblue;
+}
