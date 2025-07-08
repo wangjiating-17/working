@@ -1,0 +1,129 @@
+# 前端课程练习平台项目文档
+
+ 一、项目简介
+本项目是一个基于NEXT.js的前端课程练习平台，旨在为学生提供一个集中管理和展示前端练习作业的平台。平台整合了Qanything智能助手和Waketime学习时间跟踪API，帮助学生更高效地完成练习和跟踪学习进度。
+
+平台主要功能包括：
+- 分类展示HTML、CSS、JavaScript等不同类型的前端练习作业
+- 集成Qanything智能助手，提供实时编程帮助
+- 通过WaketimeAPI记录和展示学习时间与效率
+- 响应式设计，适配各种设备屏幕
+- 美观的UI界面，提供良好的用户体验
+ 二、Qanything集成路径与实现细节
+ 1. 集成路径选择
+Qanything智能助手集成到项目中：
+- 在详情页中右下角的浮动智能助手按钮：点击后弹出Qanything对话界面，因为知识库还不够全面，有些问题处理的不全面。
+ 2. 实现细节
+选择上述集成路径的原因：
+- 全局搜索框提供了便捷的入口，符合用户随时获取帮助的需求
+- 练习详情页的浮动按钮确保用户在查看或完成练习时能够快速获得相关帮助
+
+实现方式：
+- 使用iframe嵌入Qanything的HTML页面
+- 通过postMessage API实现与Qanything的通信
+
+<script src="https://ai.youdao.com/saas/qanything/js/agent-iframe-min.js" id="qanything-iframe"
+    data-agent-src="https://ai.youdao.com/saas/qanything/#/bots/8025F0677965437D/share" data-default-open="false"
+    data-drag="false" data-open-icon="https://download.ydstatic.com/ead/icon-qanything-iframe-btn.png"
+    data-close-icon="https://download.ydstatic.com/ead/icon-qanything-iframe-btn.png" defer="">
+</script>
+
+### 3. Qanything运行截图
+![Qanything运行截图](C:\Users\Lenovo\Pictures\联想截图\联想截图_20250708095532.png)
+
+
+## 三、WaketimeAPI集成方法
+
+### 1. 集成流程
+- 用户首次登录时授权WaketimeAPI访问学习数据
+- 平台定期获取用户的学习时间和活动数据
+- 在个人学习仪表盘展示数据统计和图表
+
+### 2. 技术实现
+- 使用OAuth 2.0进行用户认证和授权
+- 通过WaketimeAPI的RESTful接口获取数据
+- 使用Chart.js将学习数据可视化
+
+### 3. 数据展示
+- 每日学习时间统计
+- 每周学习活跃度图表
+- 不同类型练习的时间分配
+
+### 4. WaketimeAPI集成与展示截图
+![WaketimeAPI集成与展示截图](C:\Users\Lenovo\Desktop\新建文件夹\作业截图\5_20250708093415.png)
+
+
+## 四、NEXT.js项目结构
+
+### 1. 整体架构frontend-practice-platform/
+├── components/          # 可复用组件
+├── pages/               # 页面组件
+├── public/              # 静态资源
+├── styles/              # 样式文件
+├── utils/               # 工具函数
+├── api/                 # API路由
+├── config/              # 配置文件
+└── next.config.js       # NEXT.js配置
+### 2. 主要目录说明
+- **components/**: 包含导航栏、练习卡片、Qanything集成组件等
+- **pages/**: 包含首页、练习列表页、练习详情页、个人中心等页面
+- **public/**: 存放图片、字体等静态资源
+- **styles/**: 使用Tailwind CSS配置文件和自定义样式
+- **api/**: 处理与外部API的交互
+
+### 3. 路由设计
+- `/`: 首页，展示练习分类和推荐练习
+- `/exercises`: 练习列表页，按类型筛选展示
+- `/exercises/[id]`: 练习详情页，展示具体练习内容
+- `/dashboard`: 个人仪表盘，展示学习数据
+- `/qanything`: Qanything智能助手页面
+
+ 4. 集成与展示截图
+![集成与展示截图](C:\Users\Lenovo\Desktop\新建文件夹\作业截图\1_20250708092911.png)
+
+## 五、旧作业整合方式
+
+### 1. 迁移策略
+- 保留原有文件结构和内容
+- 创建统一的元数据文件，描述每个作业的信息
+
+### 2. 实现步骤
+1. 在`public/exercises`目录下创建各练习的文件夹
+2. 将旧作业文件复制到对应文件夹
+3. 创建`exercises.json`文件，记录每个练习的元数据
+4. 开发练习展示组件，根据点击详情查看内容
+
+### 3. 元数据格式{
+  "id": "html-basics",
+  "title": "HTML基础练习",
+  "type": "html",
+  "level": "beginner",
+  "description": "使用HTML5进行基础标签练习",
+  "coverImage": "/exercises/html-basics/cover.jpg",
+  "files": ["index.html", "style.css", "script.js"]
+}
+4. 集成与展示截图
+![旧作业集成与展示截图](C:\Users\Lenovo\Pictures\联想截图\联想截图_20250708104009.png)
+![旧作业集成与展示截图](C:\Users\Lenovo\Desktop\新建文件夹\作业截图\2_20250708093038.png)
+![旧作业集成与展示截图](C:\Users\Lenovo\Desktop\新建文件夹\作业截图\3_20250708093119.png)
+## 六、项目运行指南
+
+### 1. 环境要求
+- Node.js >= 16.0.0
+- npm >= 8.0.0 或 yarn >= 1.22.0
+
+ 2. 安装依赖npm install 或yarn install
+ 3. 配置环境变量
+创建`.env.local`文件，添加以下配置：WAKETIME_API_KEY=your_waketime_api_key
+WAKETIME_CLIENT_ID=your_waketime_client_id
+WAKETIME_CLIENT_SECRET=your_waketime_client_secret
+QANYTHING_URL=https://your-qanything-url.com
+ 4. 运行开发服务器npm run dev 或yarn dev
+ 5. 构建生产版本npm run build 或yarn build
+ 6. 启动生产服务器npm start或yarn start
+7. NEXT.js组织课程练习作业的运行截图
+![练习导航页](C:\Users\Lenovo\Desktop\新建文件夹\作业截图\1_20250708092911.png)
+
+
+
+    

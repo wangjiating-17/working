@@ -1,0 +1,524 @@
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web前端期末作业</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#90cdf4', // 浅蓝色
+                        secondary: '#90cdf4',
+                        accent: '#90cdf4',
+                        neutral: '#e0f2fe',
+                        'neutral-dark': '#90cdf4',
+                        darkpurple: '#90cdf4',
+                        purple: '#90cdf4',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .hover-scale {
+                transition: transform 0.3s ease;
+            }
+            .hover-scale:hover {
+                transform: scale(1.03);
+            }
+            .bg-dark-gradient {
+                background: linear-gradient(135deg, #06283D 0%, #1363DF 50%, #06283D 100%);
+            }
+            .bg-purple-gradient {
+                background: linear-gradient(135deg, #47B5FF 0%, #DFF6FF 100%);
+            }
+            .glow-effect {
+                box-shadow: 0 0 15px rgba(71, 181, 255, 0.5);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-inter bg-primary text-gray-200 min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <header
+        class="sticky top-0 z-50 bg-blue-100/90 backdrop-blur border-b border-blue-200 backdrop-blur-sm shadow-sm transition-all duration-300 border-b border-blue-800">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-code text-primary text-2xl"></i>
+                <span
+                    class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Web前端学习之路</span>
+            </div>
+
+            <!-- 桌面导航 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="font-medium text-primary hover:text-blue-300 transition-colors">首页</a>
+                <a href="#exercises" class="font-medium text-gray-400 hover:text-blue-300 transition-colors">课程练习</a>
+                <a href="#qanything" class="font-medium text-gray-400 hover:text-blue-300 transition-colors">AI问答</a>
+                <a href="#about" class="font-medium text-gray-400 hover:text-blue-300 transition-colors">关于我</a>
+            </div>
+
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-gray-400 focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </nav>
+
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="hidden md:hidden bg-gray-800 border-t border-blue-900 shadow-md">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home"
+                    class="py-2 px-4 font-medium text-primary hover:bg-blue-900/50 rounded-lg transition-colors">首页</a>
+                <a href="#exercises"
+                    class="py-2 px-4 font-medium text-gray-400 hover:bg-blue-900/50 hover:text-blue-300 rounded-lg transition-colors">课程练习</a>
+                <a href="#qanything"
+                    class="py-2 px-4 font-medium text-gray-400 hover:bg-blue-900/50 hover:text-blue-300 rounded-lg transition-colors">AI问答</a>
+                <a href="#about"
+                    class="py-2 px-4 font-medium text-gray-400 hover:bg-blue-900/50 hover:text-blue-300 rounded-lg transition-colors">关于我</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="flex-grow">
+        <!-- 英雄区域 - 修改为深蓝色渐变 -->
+        <section id="home" class="relative bg-dark-gradient py-20 overflow-hidden">
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-white mb-6">
+                        Web前端学习作品集
+                    </h1>
+                    <p class="text-[clamp(1.1rem,2vw,1.3rem)] text-gray-300 mb-10">展示我在前端开发课程中的练习作品，以及我的编程学习历程</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#exercises"
+                            class="px-8 py-3 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:opacity-90 text-white font-medium rounded-lg shadow-lg shadow-blue-900/30 transition-all transform hover:-translate-y-1">
+                            浏览练习作品
+                        </a>
+                        <a href="#qanything"
+                            class="px-8 py-3 bg-gray-800 hover:bg-gray-700 text-blue-300 border border-blue-600 font-medium rounded-lg transition-all transform hover:-translate-y-1">
+                            体验AI问答
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 装饰元素 - 调整为蓝色系 -->
+            <div
+                class="absolute top-0 right-0 w-1/3 h-1/3 bg-blue-900/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-800/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4">
+            </div>
+        </section>
+
+        <!-- 课程练习展示 - 调整为浅蓝色背景 -->
+        <section id="exercises" class="py-20 bg-primary">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-white mb-4">课程练习作品</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto">本学期学习过程中完成的前端练习项目，展示了我从基础到进阶的学习历程</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 练习卡片 1 -->
+                    <div
+                        class="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover-scale group border border-blue-900/50">
+                        <div class="h-48 bg-gray-700 overflow-hidden">
+                            <img src="C:\Users\Lenovo\Desktop\1e83ea4315c0597a120bc1cc0b585442.jpg" alt="HTML基础练习"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span
+                                    class="px-3 py-1 bg-blue-900/30 text-blue-300 text-xs font-medium rounded-full">HTML</span>
+                                <span class="ml-2 text-sm text-gray-500">基础练习</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white mb-2">HTML平时练习</h3>
+                            <p class="text-gray-400 mb-4">使用HTML5进行课堂练习，最终完成本次作业。</p>
+                            <!-- 修改 href 属性为你的 GitHub 仓库 URL -->
+                            <a href="#" class="view-details" data-title="网页展示"
+                                data-description="使用HTML5进行课堂练习，最终完成本次作业。" data-file="01.html">
+                                查看详情 <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 练习卡片 2 -->
+                    <div
+                        class="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover-scale group border border-blue-900/50">
+                        <div class="h-48 bg-gray-700 overflow-hidden">
+                            <img src="C:\Users\Lenovo\Desktop\396603bbb3ac617da87f5c7362223cac.jpg" alt="CSS布局练习"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span
+                                    class="px-3 py-1 bg-blue-900/30 text-blue-300 text-xs font-medium rounded-full">CSS</span>
+                                <span class="ml-2 text-sm text-gray-500">中级练习</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white mb-2">CSS平时练习</h3>
+                            <p class="text-gray-400 mb-4">使用CSS进行作业练习，完成作业。</p>
+                            <!-- 修改 href 属性为你的 GitHub 仓库 URL -->
+                            <a href="#" class="view-details" data-title="CSS平时练习" data-description="使用CSS进行作业练习，完成作业。"
+                                data-file="03.css">
+                                查看详情 <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 练习卡片 3 -->
+                    <div
+                        class="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover-scale group border border-blue-900/50">
+                        <div class="h-48 bg-gray-700 overflow-hidden">
+                            <img src="C:\Users\Lenovo\Desktop\OIP-C.jpg" alt="JavaScript交互练习"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span
+                                    class="px-3 py-1 bg-blue-900/30 text-blue-300 text-xs font-medium rounded-full">JavaScript</span>
+                                <span class="ml-2 text-sm text-gray-500">高级练习</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white mb-2">JS平时练习</h3>
+                            <p class="text-gray-400 mb-4">使用JavaScript实现的任务管理应用，支持添加、删除和筛选任务等功能。</p>
+                            <a href="https://github.com/wangjiating-17/working/blob/main/layout.js"
+                                class="inline-flex items-center text-blue-300 font-medium hover:text-blue-200 transition-colors">
+                                查看详情 <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 练习卡片 4 -->
+                    <div
+                        class="bg-gray-800 rounded-xl shadow-lg overflow-hidden hover-scale group border border-green-900/50">
+                        <div class="h-48 bg-gray-700 overflow-hidden">
+                            <img src="C:\Users\Lenovo\Desktop\1e83ea4315c0597a120bc1cc0b585442.jpg" alt="响应式设计"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span
+                                    class="px-3 py-1 bg-green-900/30 text-green-300 text-xs font-medium rounded-full">平时作业截图</span>
+                                <span class="ml-2 text-sm text-gray-500">平时练习</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-white mb-2">平时作业</h3>
+                            <p class="text-gray-400 mb-4"> Qanything、平时作业、Waketime等作业截图。</p>
+                            <!-- 修改href为包含五张图片的HTML文件路径 -->
+                            <a href="C:\Users\Lenovo\Desktop\新建文件夹\zuoyejietu.html"
+                                class="inline-flex items-center text-green-300 font-medium hover:text-green-200 transition-colors">
+                                查看详情 <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="text-center mt-12">
+                        <a href="#"
+                            class="inline-flex items-center px-6 py-3 bg-gray-800 border border-blue-800 rounded-lg font-medium text-blue-300 hover:bg-gray-700 transition-colors">
+                            ...... <i class="fa fa-angle-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="qanything" class="py-20 bg-primary">
+            <div class="container mx-auto px-4 text-center">
+                <p class="text-blue-300 text-2xl font-bold bg-blue-900/30 py-2 px-4 inline-block rounded-md">
+                    Qanything问答体验在页面右下方，欢迎体验
+                </p>
+            </div>
+        </section>
+
+        <!-- 关于我 - 调整为浅蓝色主题 -->
+        <section id="about" class="py-20 bg-primary">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-white mb-6">关于我的学习历程</h2>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            我是西北民大新闻学专业的一名大二学生，通过学习WEB前端这门课程，我掌握了HTML、CSS、JavaScript等基础知识，并开始学习React和Next.js等前端框架。
+                        </p>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            这个作品集展示了我在前端开发课程中的练习项目，记录了我的学习过程和成长。通过这些练习，我大致掌握了前端开发的基本技能，还学会了如何运用这些技能解决一些小的实际问题。
+                        </p>
+                        <p class="text-gray-400 mb-8 leading-relaxed">
+                            在未来的学习中，我希望能够进一步深入学习前端开发技术，提高自己的编程水平，增强我的综合素质能力。
+                        </p>
+
+                        <div class="flex flex-wrap gap-4">
+                            <div class="flex items-center">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-blue-900/30 flex items-center justify-center mr-3">
+                                    <i class="fa fa-code text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-white">Web前端开发</h4>
+                                    <p class="text-gray-500 text-sm">HTML, CSS, JavaScript, React</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-green-900/30 flex items-center justify-center mr-3">
+                                    <i class="fa fa-pencil text-green-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-white">新闻传播</h4>
+                                    <p class="text-gray-500 text-sm">新媒体运营, 内容创作</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-1 lg:order-2 relative">
+                        <div
+                            class="relative z-10 rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
+                            <img src="C:\Users\Lenovo\Desktop\d6e315958c7e52356c95d6df01b623a8.jpg" alt="学生照片"
+                                class="w-full h-auto">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-blue-900/20 rounded-full z-0">
+                        </div>
+                        <div class="absolute -top-6 -left-6 w-32 h-32 bg-blue-800/20 rounded-full z-0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- 页脚 - 调整为浅蓝色 -->
+    <footer class="bg-blue-100 text-blue-700 pt-16 pb-8 border-t border-blue-200">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <i class="fa fa-code text-primary text-2xl"></i>
+                        <span class="text-xl font-bold">Web前端学习之路</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">
+                        记录我在学习Web前端过程中的练习和成长，展示我的学习成果和技能提升。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 text-white">快速链接</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="#exercises" class="text-gray-400 hover:text-white transition-colors">课程练习</a></li>
+                        <li><a href="#qanything" class="text-gray-400 hover:text-white transition-colors">AI问答</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于我</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 text-white">课程练习</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">HTML基础</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">CSS布局</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">JavaScript交互</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">平时作业</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-6 text-white">记得联系我呦</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-primary mr-3"></i>
+                            <a href="mailto:example@mail.com"
+                                class="text-gray-400 hover:text-white transition-colors">2741723706@qq.com</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-primary mr-3"></i>
+                            <span class="text-gray-400">+86 181 6795 7828</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-map-marker text-primary mr-3"></i>
+                            <span class="text-gray-400">甘肃 兰州（甘肃，武威）</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 编码时长统计 -->
+            <div class="border-t border-gray-800 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                        © 2025 Web前端学习之路. 祝你前方顺利.
+                    </p>
+
+                    <div class="flex items-center">
+                        <div class="flex items-center mr-6">
+                            <i class="fa fa-clock-o text-primary mr-2"></i>
+                            <div>
+                                <p class="text-xs text-gray-400">本学期编码时长</p>
+                                <p class="text-lg font-semibold text-white" id="codingTime">--</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <i class="fa fa-calendar-check-o text-primary mr-2"></i>
+                            <div>
+                                <p class="text-xs text-gray-400">已完成练习</p>
+                                <p class="text-lg font-semibold text-white">24 个</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://ai.youdao.com/saas/qanything/js/agent-iframe-min.js" id="qanything-iframe"
+        data-agent-src="https://ai.youdao.com/saas/qanything/#/bots/8025F0677965437D/share" data-default-open="false"
+        data-drag="false" data-open-icon="https://download.ydstatic.com/ead/icon-qanything-iframe-btn.png"
+        data-close-icon="https://download.ydstatic.com/ead/icon-qanything-iframe-btn.png" defer="">
+        </script>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menuBtn').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('shadow-sm');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // 关闭移动端菜单
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 点击查看详情功能
+            document.querySelectorAll('.view-details').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const title = this.dataset.title;
+                    const description = this.dataset.description;
+                    const file = this.dataset.file;
+
+                    // 打开代码文件
+                    if (file) {
+                        window.open(file, '_blank');
+                    } else {
+                        alert(`标题: ${title}\n描述: ${description}`);
+                    }
+                });
+            });
+        });
+
+        // 模拟获取WakaTime编码时长
+        function fetchCodingTime() {
+            // 移除暴露的API密钥
+            return {
+                success: true,
+                data: {
+                    human_readable_total: "68小时28分钟",
+                    total_seconds: 246480
+                }
+            };
+        }
+
+        // 显示编码时长
+        async function displayCodingTime() {
+            const codingTimeElement = document.getElementById('codingTime');
+            codingTimeElement.textContent = '加载中...';
+
+            try {
+                const response = fetchCodingTime();
+                if (response.success) {
+                    codingTimeElement.textContent = response.data.human_readable_total;
+                } else {
+                    codingTimeElement.textContent = '无法获取数据';
+                }
+            } catch (error) {
+                console.error('获取编码时长失败:', error);
+                codingTimeElement.textContent = '加载失败';
+            }
+        }
+
+        // 页面加载完成后获取并显示编码时长
+        window.addEventListener('load', displayCodingTime);
+
+        // 提交问题处理
+        document.getElementById('submitQuestion').addEventListener('click', async function () {
+            const question = document.getElementById('questionInput').value;
+            if (question.trim() === '') {
+                return;
+            }
+
+            const answerOutput = document.getElementById('answerOutput');
+            answerOutput.textContent = '正在获取答案...';
+
+            try {
+                // 使用模拟响应
+                setTimeout(() => {
+                    const responses = [
+                        "在CSS中，盒模型是布局的基础概念，每个元素都被看作是一个矩形盒子，由内容(content)、内边距(padding)、边框(border)和外边距(margin)组成。",
+                        "Flex布局是CSS3中引入的一种布局模式，它能够更有效地对容器中的项目进行排列、对齐和分配空间，特别适合响应式设计。",
+                        "在JavaScript中，闭包是指有权访问另一个函数作用域中变量的函数。创建闭包的常见方式是在一个函数内部创建另一个函数。"
+                    ];
+
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    answerOutput.textContent = randomResponse;
+                }, 1500);
+            } catch (error) {
+                console.error('获取答案失败:', error);
+                answerOutput.textContent = '获取答案失败，请稍后再试。';
+            }
+        });
+    </script>
+</body>
+
+</html>
